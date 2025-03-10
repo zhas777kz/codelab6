@@ -328,6 +328,25 @@ print('Моё хобби —', hobby)
         <div class="section" id="quiz">
             <h2>Проверка знаний</h2>
             <p>Пройдите небольшой тест, чтобы проверить, насколько хорошо вы усвоили материал.</p>
+
+		<!-- Online Test Pad Test Widget (#327329)-->
+<div id="otp_wgt_w6e6adhc3xs6c"></div>
+<script type="text/javascript">
+    var otp_wjs_dt = (new Date).getTime();
+    (function (w, d, n, s, rp) {
+        w[n] = w[n] || [];
+        rp = {};
+        w[n].push(function () {
+            otp_render_widget(d.getElementById("otp_wgt_w6e6adhc3xs6c"), 'onlinetestpad.com', 'w6e6adhc3xs6c', rp);
+        }); 
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//onlinetestpad.com/js/widget.js?" + otp_wjs_dt;
+        s.async = true;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })(this, this.document, "otp_widget_callbacks");
+</script>
+		
             <button class="button" onclick="prevStep()">Назад</button>
             <button class="button" onclick="nextStep()">Далее</button>
         </div>
