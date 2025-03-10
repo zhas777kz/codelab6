@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок: Введение в тему</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1, h2 {
+            color: #212529;
+        }
+        .section {
+            padding: 20px;
+            display: none;
+        }
+        .button {
+            display: inline-block;
+            width: 180px;
+            text-align: center;
+            background: #ff9800;
+            color: white;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e68900;
+        }
+        .progress-container {
+            width: 100%;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            height: 8px;
+            width: 0%;
+            background: #ff9800;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+    </style>
+    <script>
+        let currentStep = 0;
+        const totalSteps = 6;
+        
+        function showStep(step) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.display = (index === step) ? 'block' : 'none';
+            });
+            updateProgressBar();
+        }
+        
+        function nextStep() {
+            let sections = document.querySelectorAll('.section');
+            if (currentStep < sections.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+        
+        function updateProgressBar() {
+            let progressBar = document.querySelector('.progress-bar');
+            let progress = ((currentStep + 1) / totalSteps) * 100;
+            progressBar.style.width = progress + '%';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            showStep(currentStep);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>урок 2: Алфавит языка и синтаксис</h1>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="section" id="introduction">
+            <h2>Введение в тему</h2>
+            <p>Этот урок поможет вам изучить основные понятия и подготовиться к выполнению заданий.</p>
+			<div class="lesson-video">
+    <iframe width="100%" height="340"
+  src="https://www.youtube.com/embed/jg13C1S3Gx4?rel=0"
+  frameborder="0" allowfullscreen>
+</iframe>
+
+</div>
+
+<style>
+    .lesson-video {
+        max-width: 800px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        
+    }
+   
+</style>
+			<br><br>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="interactive">
+            <h2>Интерактивное объяснение</h2>
+            <p>В этом разделе вы найдете интерактивные примеры и объяснения, которые помогут вам лучше понять тему.</p>
+			
+		
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px; margin: 0;  }
+        .widget { max-width: 99%; margin: auto;  padding: 20px; border-radius: 10px;text-align:justify}
+        .step { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: none; }
+        .step.active { display: block; }
+        .step h2 { color: #212529; font-size: 22px; }
+        pre { background: #f1f3f5; padding: 10px; border-radius: 5px; font-size: 20px; overflow-x: auto;}
+        img { max-width: 100%; height: auto; border-radius: 5px; }
+        .button1 { display: inline-block; background: #007bff; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; border: none; cursor: pointer; font-size: 16px; }
+        .button1:hover { background: #0056b3; }
+        @media (max-width: 600px) {
+            .widget { padding: 15px; }
+            .step h2 { font-size: 16px; }
+            .button1 { font-size: 14px; padding: 8px 12px; }
+        }
+    </style>
+    <script>
+        function toggleStep(stepIndex) {
+            let step = document.querySelectorAll('.step')[stepIndex];
+            if (step.classList.contains('active')) {
+                step.classList.remove('active');
+            } else {
+                step.classList.add('active');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="widget">
+        
+        <div class="step active">
+            <h2>1 шаг: Что такое алфавит языка?</h2>
+            <p><strong>Инструкция:</strong> Язык программирования Python использует специальный алфавит — это набор символов, с помощью которых пишется код. В этот алфавит входят:</p>
+            <ul>
+                <li>Английские буквы (большие и маленькие)</li>
+                <li>Цифры</li>
+                <li>Специальные символы, такие как +, -, =, :, и другие</li>
+            </ul>
+            
+            <pre>
+name = 'Alina'   # Английские буквы
+age = 12         # Цифры
+print(name, age)
+            </pre>
+            <p><strong>Пояснение:</strong> В этом примере мы использовали буквы для имени переменной и цифры для возраста. Помните, что Python различает большие и маленькие буквы!</p>
+            <button class="button1" onclick="toggleStep(1)">Следующий шаг</button>
+        </div>
+        
+        <div class="step">
+            <h2>2 шаг: Основы синтаксиса в Python</h2>
+            <p><strong>Инструкция:</strong> Синтаксис — это правила, по которым пишутся программы. В Python важно соблюдать правильное оформление кода:</p>
+            <ul>
+                <li>Использовать двоеточие (:) после команд, которые требуют блока кода.</li>
+                <li>Обязательно следить за отступами (4 пробела или клавиша Tab).</li>
+            </ul>
+            
+            <p><strong>Код для демонстрации (правильный):</strong></p>
+            <pre>
+name = 'Alina'
+print('Привет,', name)
+            </pre>
+            <p><strong>Код с ошибкой (неправильный):</strong></p>
+            <pre>
+name = 'Alina'
+print('Привет,' name)  # Ошибка: пропущена запятая
+            </pre>
+            <p><strong>Пояснение:</strong> Если забыть запятую или кавычки, программа покажет ошибку. Всегда проверяйте правильность написания команд.</p>
+            <button class="button1" onclick="toggleStep(2)">Следующий шаг</button>
+        </div>
+        
+        <div class="step">
+            <h2>3 шаг: Создаём свою первую программу с синтаксисом</h2>
+            <p><strong>Инструкция:</strong> Теперь давайте создадим программу, которая расскажет немного о вас. В этой программе мы будем использовать переменные и выводить текст на экран.</p>
+           
+            <pre>
+name = 'Alina'
+hobby = 'drawing'
+age = 12
+
+print('Меня зовут', name)
+print('Мне', age, 'лет')
+print('Моё хобби —', hobby)
+            </pre>
+            <p><strong>Пояснение:</strong> Мы создали три переменные: name, hobby и age, и вывели их на экран с помощью команды print(). Попробуйте изменить значения переменных и посмотреть, как изменится результат.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+			<br><br>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="practice">
+            <h2>Практическое задание</h2>
+            <p>Попробуйте выполнить задания, чтобы закрепить полученные знания на практике.</p>
+			
+		
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+			text-align:justify;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 20px;
+            user-select: none;
+            color: black;
+        }
+        .keyword { color: #990099; } /* Цвет для ключевых слов, например, print */
+        .string { color: #009900; } /* Цвет для строковых значений */
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Мини-игра: «Проверка синтаксиса»</h2>
+        <h3>Задача:</h3>
+        <p>Создайте программу в IDLE, которая будет рассказывать о вас, но с правильным синтаксисом! Ваша программа должна содержать:</p>
+        <ul>
+            <li>имя,</li>
+            <li>возраст,</li>
+            <li>любимый цвет.</li>
+        </ul>
+        <p>Проверьте, чтобы программа не выдавала ошибок!</p>
+    </div>
+    
+    <div class="card">
+        <h3>Пошаговые инструкции для выполнения задания</h3>
+        <ol>
+            <li>
+                <strong>Создайте новый файл в IDLE.</strong>
+                <p><em>Инструкция:</em> "Откройте IDLE и выберите <strong>File → New File</strong>."</p>
+            </li>
+            <li>
+                <strong>Напишите программу с правильным синтаксисом:</strong>
+              <br><br>
+                <div class="code">
+                    <span class="keyword">name</span> = <span class="string">'Alina'</span><br>
+                    <span class="keyword">age</span> = 12<br>
+                    <span class="keyword">favorite_color</span> = <span class="string">'blue'</span><br>
+                    <br>
+                    <span class="keyword">print</span>(<span class="string">'Меня зовут'</span>, name)<br>
+                    <span class="keyword">print</span>(<span class="string">'Мне'</span>, age, <span class="string">'лет'</span>)<br>
+                    <span class="keyword">print</span>(<span class="string">'Мой любимый цвет —'</span>, favorite_color)
+                </div>
+              <br>
+            </li>
+            <li>
+                <strong>Сохраните программу и запустите её (нажмите F5).</strong>
+                <p><em>Инструкция:</em> "Сохраните программу через <strong>File → Save As...</strong> и нажмите <strong>F5</strong> для запуска. Если программа показывает ошибки — проверьте кавычки, запятые и правильное написание переменных."</p>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="card">
+        <h3>Подсказки и примеры</h3>
+        <ul>
+            <li><strong>Подсказка 1:</strong> "Убедитесь, что текст находится в кавычках ('текст')."</li>
+            <li><strong>Подсказка 2:</strong> "Переменные должны быть названы правильно:
+                <ul>
+                    <li>использовать только английские буквы,</li>
+                    <li>нельзя использовать пробелы (заменяйте их нижним подчёркиванием _).</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h3>Дополнительное задание</h3>
+        <p>"Добавьте запрос на ввод данных от пользователя. Программа должна спросить имя и любимый цвет, а затем вывести их."</p>
+        <div class="code">
+            <span class="keyword">user_name</span> = <span class="keyword">input</span>(<span class="string">'Как вас зовут? '</span>)<br>
+            <span class="keyword">favorite_color</span> = <span class="keyword">input</span>(<span class="string">'Ваш любимый цвет: '</span>)<br>
+            <br>
+            <span class="keyword">print</span>(<span class="string">'Приятно познакомиться,'</span>, user_name + <span class="string">'!'</span>)<br>
+            <span class="keyword">print</span>(<span class="string">'Твой любимый цвет —'</span>, favorite_color)
+        </div>
+    </div>
+</body>
+</html>
+
+			<br><br>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="independent">
+            <h2>Самостоятельное задание</h2>
+            <p>Попробуйте применить изученный материал, создав свою собственную программу или решение.</p>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="quiz">
+            <h2>Проверка знаний</h2>
+            <p>Пройдите небольшой тест, чтобы проверить, насколько хорошо вы усвоили материал.</p>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="conclusion">
+            <h2>Завершение урока</h2>
+            <p>Подведем итоги: что нового вы узнали, и какие темы стоит повторить.</p>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <a class="button" href="index.html">К другим урокам</a>
+        </div>
+    </div>
+</body>
+</html>

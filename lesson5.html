@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок: Введение в тему</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1, h2 {
+            color: #212529;
+        }
+        .section {
+            padding: 20px;
+            display: none;
+        }
+        .button {
+            display: inline-block;
+            width: 180px;
+            text-align: center;
+            background: #ff9800;
+            color: white;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #e68900;
+        }
+        .progress-container {
+            width: 100%;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            height: 8px;
+            width: 0%;
+            background: #ff9800;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+    </style>
+    <script>
+        let currentStep = 0;
+        const totalSteps = 6;
+        
+        function showStep(step) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.display = (index === step) ? 'block' : 'none';
+            });
+            updateProgressBar();
+        }
+        
+        function nextStep() {
+            let sections = document.querySelectorAll('.section');
+            if (currentStep < sections.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+        
+        function updateProgressBar() {
+            let progressBar = document.querySelector('.progress-bar');
+            let progress = ((currentStep + 1) / totalSteps) * 100;
+            progressBar.style.width = progress + '%';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            showStep(currentStep);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>урок 5: Правила записи арифметических выражений</h1>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="section" id="introduction">
+            <h2>Введение в тему</h2>
+            <p>Этот урок поможет вам изучить основные понятия и подготовиться к выполнению заданий.</p>
+			<div class="lesson-video">
+     <iframe width="100%" height="340"
+  src="https://www.youtube.com/embed/VpplH8KgPJc?rel=0"
+  frameborder="0" allowfullscreen>
+</iframe>
+
+</div>
+
+<style>
+    .lesson-video {
+        max-width: 800px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        
+    }
+   
+</style>
+			<br><br>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="interactive">
+            <h2>Интерактивное объяснение</h2>
+            <p>В этом разделе вы найдете интерактивные примеры и объяснения, которые помогут вам лучше понять тему.</p>
+			
+			
+ 
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px; margin: 0;  }
+        .widget { max-width: 99%; margin: auto;  padding: 20px; border-radius: 10px;text-align:justify}
+        .step { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: none; }
+        .step.active { display: block; }
+        .step h2 { color: #212529; font-size: 22px; }
+        pre { background: #f1f3f5; padding: 10px; border-radius: 5px; font-size: 20px; overflow-x: auto;}
+        img { max-width: 100%; height: auto; border-radius: 5px; }
+        .button1 { display: inline-block; background: #007bff; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; border: none; cursor: pointer; font-size: 16px; }
+        .button1:hover { background: #0056b3; }
+        @media (max-width: 600px) {
+            .widget { padding: 15px; }
+            .step h2 { font-size: 16px; }
+            .button1 { font-size: 14px; padding: 8px 12px; }
+        }
+    </style>
+    <script>
+        function toggleStep(stepIndex) {
+            let step = document.querySelectorAll('.step')[stepIndex];
+            if (step.classList.contains('active')) {
+                step.classList.remove('active');
+            } else {
+                step.classList.add('active');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="widget">
+        
+        <div class="step active">
+            <h2>1 шаг: Основные арифметические операции</h2>
+            <p><strong>Инструкция:</strong> В Python можно выполнять разные арифметические операции. Вот основные из них:</p>
+            <ul>
+                <li><strong>+</strong> — сложение</li>
+                <li><strong>-</strong> — вычитание</li>
+                <li><strong>*</strong> — умножение</li>
+                <li><strong>/</strong> — деление</li>
+                <li><strong>//</strong> — целочисленное деление</li>
+                <li><strong>%</strong> — остаток от деления</li>
+                <li><strong>**</strong> — возведение в степень</li>
+            </ul>
+         
+            <pre>
+a = 10
+b = 3
+
+print(a + b)  # Сложение: 13
+print(a - b)  # Вычитание: 7
+print(a * b)  # Умножение: 30
+print(a / b)  # Деление: 3.333...
+            </pre>
+            <p><strong>Пояснение:</strong> Вы можете выполнять простые вычисления прямо в коде. Обратите внимание: результат деления всегда число с точкой (тип float).</p>
+            <button class="button1" onclick="toggleStep(1)">Следующий шаг</button>
+        </div>
+        
+        <div class="step">
+            <h2>2 шаг: Специальные арифметические операции</h2>
+            <p><strong>Инструкция:</strong> В Python есть и более сложные арифметические операции. Давайте посмотрим, как они работают.</p>
+           
+            <pre>
+# Целочисленное деление
+print(a // b)  # Результат: 3
+
+# Остаток от деления
+print(a % b)   # Результат: 1
+
+# Возведение в степень
+print(a ** b)  # Результат: 1000
+            </pre>
+            <p><strong>Пояснение:</strong> Целочисленное деление (<code>//</code>) убирает дробную часть и оставляет только целое число. Операция <code>%</code> показывает остаток от деления. Возведение в степень (<code>**</code>) работает так: <code>a</code> в степени <code>b</code>.</p>
+            <button class="button1" onclick="toggleStep(2)">Следующий шаг</button>
+        </div>
+        
+        <div class="step">
+            <h2>3 шаг: Порядок выполнения операций</h2>
+            <p><strong>Инструкция:</strong> Python выполняет арифметические операции в определённом порядке. Сначала умножение и деление, потом сложение и вычитание. Если нужно изменить порядок, используйте скобки.</p>
+            
+            <pre>
+result = 2 + 3 * 4
+print(result)  # Результат: 14 (сначала умножение)
+
+# Изменим порядок с помощью скобок
+result = (2 + 3) * 4
+print(result)  # Результат: 20 (сначала сложение)
+            </pre>
+            <p><strong>Пояснение:</strong> Без скобок Python сначала умножает, а потом складывает. Со скобками сначала выполняется то, что внутри них.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+			<br><br>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="practice">
+            <h2>Практическое задание</h2>
+            <p>Попробуйте выполнить задания, чтобы закрепить полученные знания на практике.</p>
+			
+			 <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+          text-align:justify;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 20px;
+            user-select: none;
+            color: black;
+        }
+        .keyword { color: #990099; } /* Цвет для ключевых слов, например, print */
+        .string { color: #009900; } /* Цвет для строковых значений */
+        .comment { color: #666666; } /* Цвет для комментариев */
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Мини-игра: «Калькулятор для школы»</h2>
+        <h3>Задача:</h3>
+        <p>Создайте программу в IDLE, которая будет выполнять простые арифметические операции.</p>
+        <p>Программа должна:</p>
+        <ul>
+            <li>запросить у пользователя два числа,</li>
+            <li>выполнить с ними сложение, вычитание, умножение и деление,</li>
+            <li>показать результат на экране.</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h3>Пошаговые инструкции для выполнения задания</h3>
+        <ol>
+            <li>
+                <strong>Создайте новый файл в IDLE.</strong>
+                <p><em>Инструкция:</em> "Откройте IDLE и выберите <strong>File → New File</strong>."</p>
+            </li>
+            <li>
+                <strong>Напишите программу с вводом двух чисел:</strong>
+              <br><br>
+                <div class="code">
+                    <span class="comment"># Ввод двух чисел от пользователя</span><br>
+                    <span class="keyword">number1</span> = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">'Введите первое число: '</span>))<br>
+                    <span class="keyword">number2</span> = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">'Введите второе число: '</span>))
+                </div>
+              <br>
+            </li>
+            <li>
+                <strong>Выполните арифметические операции:</strong>
+              <br><br>
+                <div class="code">
+                    <span class="comment"># Сложение</span><br>
+                    <span class="keyword">sum_result</span> = number1 + number2<br>
+                    <span class="keyword">print</span>(<span class="string">'Сумма:'</span>, sum_result)<br>
+                    <br>
+                    <span class="comment"># Вычитание</span><br>
+                    <span class="keyword">difference</span> = number1 - number2<br>
+                    <span class="keyword">print</span>(<span class="string">'Разность:'</span>, difference)<br>
+                    <br>
+                    <span class="comment"># Умножение</span><br>
+                    <span class="keyword">product</span> = number1 * number2<br>
+                    <span class="keyword">print</span>(<span class="string">'Произведение:'</span>, product)<br>
+                    <br>
+                    <span class="comment"># Деление</span><br>
+                    <span class="keyword">division</span> = number1 / number2<br>
+                    <span class="keyword">print</span>(<span class="string">'Частное:'</span>, division)
+                </div>
+              <br>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="card">
+        <h3>Дополнительное задание</h3>
+        <p>"Добавьте в программу операции целочисленного деления и остатка от деления."</p>
+        <div class="code">
+            <span class="comment"># Целочисленное деление</span><br>
+            <span class="keyword">integer_division</span> = number1 // number2<br>
+            <span class="keyword">print</span>(<span class="string">'Целочисленное деление:'</span>, integer_division)<br>
+            <br>
+            <span class="comment"># Остаток от деления</span><br>
+            <span class="keyword">remainder</span> = number1 % number2<br>
+            <span class="keyword">print</span>(<span class="string">'Остаток от деления:'</span>, remainder)
+        </div>
+    </div>
+</body>
+			<br><br>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="independent">
+            <h2>Самостоятельное задание</h2>
+            <p>Попробуйте применить изученный материал, создав свою собственную программу или решение.</p>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="quiz">
+            <h2>Проверка знаний</h2>
+            <p>Пройдите небольшой тест, чтобы проверить, насколько хорошо вы усвоили материал.</p>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <button class="button" onclick="nextStep()">Далее</button>
+        </div>
+        
+        <div class="section" id="conclusion">
+            <h2>Завершение урока</h2>
+            <p>Подведем итоги: что нового вы узнали, и какие темы стоит повторить.</p>
+            <button class="button" onclick="prevStep()">Назад</button>
+            <a class="button" href="index.html">К другим урокам</a>
+        </div>
+    </div>
+</body>
+</html>
