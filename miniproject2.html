@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мини-проект 2 — Конвертер валют (тенге ⇄ валюта)</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#f9fbff;color:#1e1e1e;margin:0;}
+header{background-color:#1e73f7;color:#fff;text-align:center;padding:20px 10px;}
+main{max-width:850px;margin:20px auto;padding:20px;}
+.card{background:#fff;border:2px solid #1e73f7;border-radius:10px;padding:20px;margin-bottom:20px;display:none;}
+.card.active{display:block;animation:fadeIn .5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.card.done{background:#f0f7ff;}
+.card h2{margin-top:0;color:#1e73f7;}
+button{background:#1e73f7;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;font-weight:600;}
+button:hover{background:#155ac0;}
+textarea{width:100%;height:120px;border:2px solid #cfdaf1;border-radius:8px;font-family:monospace;padding:8px;}
+pre{background:#e8f0ff;padding:10px;border-radius:8px;white-space:pre-wrap;}
+.msg{margin-top:10px;padding:8px 10px;border-radius:8px;font-weight:600;}
+.ok{background:#e6fff0;color:#1c7d4d;}
+.err{background:#ffe6e6;color:#b30000;}
+.warn{background:#fff9e6;color:#b37400;}
+#final{display:none;text-align:center;padding:30px;border:2px solid #1e73f7;border-radius:10px;background:#fff;}
+#final h2{color:#1e73f7;}
+.copy{background:#1e73f7;color:#fff;margin-top:10px;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;}
+.copy:hover{background:#155ac0;}
+</style>
+</head>
+<body>
+<header>
+<h1>Мини-проект 2 — Конвертер валют (тенге ⇄ валюта)</h1>
+<p>Пошаговое создание программы по теме «Линейные алгоритмы»</p>
+</header>
+<main>
+<p>💬 Представь, что ты создаёшь программу для обменного пункта. Она переводит сумму из тенге в валюту и обратно. Пройди все этапы, чтобы собрать рабочий конвертер!</p>
+
+<div class="card active" id="step1">
+<h2>1️⃣ Перевод тенге в валюту</h2>
+<p>Программа запрашивает сумму в тенге и курс валюты, затем вычисляет, сколько это будет в долларах.</p>
+<pre>Пример:
+Ввод:
+4750
+475
+Вывод:
+10.0</pre>
+<textarea id="code1" placeholder="# Введи код для деления"></textarea>
+<button onclick="checkStep(1)">Проверить этап</button>
+<div id="res1"></div>
+</div>
+
+<div class="card" id="step2">
+<h2>2️⃣ Добавь форматированный вывод</h2>
+<p>Сделай результат понятным для пользователя:</p>
+<pre>4750 ₸ = 10.0 USD</pre>
+<textarea id="code2" placeholder="# Добавь поясняющий вывод"></textarea>
+<button onclick="checkStep(2)">Проверить этап</button>
+<div id="res2"></div>
+</div>
+
+<div class="card" id="step3">
+<h2>3️⃣ Добавь обмен в обе стороны</h2>
+<p>Теперь программа должна выводить оба направления обмена.</p>
+<pre>4750 ₸ = 10.0 USD
+10 USD = 4750 ₸</pre>
+<textarea id="code3" placeholder="# Добавь обратный расчёт"></textarea>
+<button onclick="checkStep(3)">Проверить этап</button>
+<div id="res3"></div>
+</div>
+
+<div class="card" id="step4">
+<h2>4️⃣ Учти комиссию 1.5%</h2>
+<p>Теперь обменный пункт удерживает комиссию 1.5%. Умножь результат на <code>0.985</code>.</p>
+<pre>usd = tenge / rate * 0.985</pre>
+<textarea id="code4" placeholder="# Добавь комиссию 1.5%"></textarea>
+<button onclick="checkStep(4)">Проверить этап</button>
+<div id="res4"></div>
+</div>
+
+<div class="card" id="step5">
+<h2>5️⃣ Добавь ввод валюты</h2>
+<p>Пусть пользователь сам вводит название валюты (USD, EUR и т.д.), а программа использует его в выводе.</p>
+<pre>Пример:
+USD
+4750
+475
+→
+4750 ₸ = 10.0 USD
+10.0 USD = 4750 ₸</pre>
+<textarea id="code5" placeholder="# Добавь переменную currency"></textarea>
+<button onclick="checkStep(5)">Проверить этап</button>
+<div id="res5"></div>
+</div>
+
+<div id="final">
+<h2>🎉 Ты прошёл все этапы!</h2>
+<p>Отлично! Теперь у тебя есть рабочий конвертер валют.</p>
+<pre id="finalcode">currency = input()
+tenge = float(input())
+rate = float(input())
+usd = tenge / rate * 0.985
+back = usd * rate
+print(tenge, '₸ =', round(usd, 2), currency)
+print(round(back, 2), '₸ =', round(usd, 2), currency)</pre>
+<button class="copy" onclick="navigator.clipboard.writeText(document.getElementById('finalcode').innerText)">Скопировать код</button>
+<button class="copy" onclick="window.scrollTo({top:0,behavior:'smooth'});location.reload();">Пройти заново</button>
+</div>
+</main>
+
+<script>
+function msg(box,type,text){const d=document.createElement('div');d.className='msg '+type;d.textContent=text;box.appendChild(d);}
+function showStep(n){document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));const s=document.getElementById('step'+n);if(s){s.classList.add('active');s.scrollIntoView({behavior:'smooth'});}}
+function checkStep(n){const code=document.getElementById('code'+n).value.toLowerCase();const res=document.getElementById('res'+n);res.innerHTML='';let ok=true;
+if(code.trim()===''){msg(res,'warn','Введите код.');return;}
+if(n===1){if(!code.includes('input')){msg(res,'err','Нет ввода через input().');ok=false;}if(!code.includes('/')){msg(res,'err','Нет операции деления (/).');ok=false;}if(!code.includes('print')){msg(res,'warn','Добавь вывод print().');ok=false;}}
+if(n===2){if(!code.includes('₸')){msg(res,'warn','Добавь символ ₸ в вывод.');ok=false;}if(!code.includes('usd')){msg(res,'warn','Добавь обозначение валюты USD.');ok=false;}}
+if(n===3){if(!code.includes('*')){msg(res,'err','Нет умножения для обратного расчёта.');ok=false;}if(!code.includes('/')){msg(res,'warn','Проверь деление при переводе в валюту.');ok=false;}}
+if(n===4){if(!code.includes('0.985')){msg(res,'err','Не учтена комиссия (0.985).');ok=false;}}
+if(n===5){if(!code.includes('currency')){msg(res,'err','Добавь переменную currency.');ok=false;}if(!code.includes('input')){msg(res,'warn','Добавь ввод валюты через input().');ok=false;}}
+if(ok){msg(res,'ok','✅ Этап '+n+' выполнен!');document.getElementById('step'+n).classList.add('done');setTimeout(()=>{if(n<5){showStep(n+1);}else{document.getElementById('final').style.display='block';document.getElementById('final').scrollIntoView({behavior:'smooth'});}},800);} }
+</script>
+</body>
+</html>

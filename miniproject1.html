@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мини-проект 1 — Калькулятор покупок (пошаговый)</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#f7fbff;color:#0f172a;margin:0;}
+header{background:linear-gradient(135deg,#1e73f7,#5aa2ff);color:#fff;text-align:center;padding:20px;}
+main{max-width:900px;margin:40px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 24px rgba(15,23,42,.08);}
+section{display:none;}
+section.active{display:block;}
+button{background:#1e73f7;color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer;margin-top:10px;}
+button:hover{background:#155edb;}
+pre,code{background:#0b1736;color:#e3ecff;padding:10px;border-radius:8px;display:block;}
+textarea{width:100%;height:160px;font-family:monospace;font-size:15px;border:2px solid #cfe2ff;border-radius:10px;padding:10px;}
+#resultBox{margin-top:15px;padding:12px;border-radius:10px;background:#f0f4ff;}
+.ok{color:#198754;font-weight:600;}
+.err{color:#c0392b;font-weight:600;}
+.warn{color:#e69500;font-weight:600;}
+.table{border-collapse:collapse;width:100%;margin:10px 0;}
+.table th,.table td{border:1px solid #ccd9ff;padding:8px;text-align:center;}
+.table th{background:#e8f1ff;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Мини‑проект 1 — Калькулятор покупок</h1>
+  <p>Пошаговое создание программы (линейный алгоритм)</p>
+</header>
+<main>
+
+<!-- Этап 1 -->
+<section id="step1" class="active">
+  <h2>Этап 1. Базовая программа</h2>
+  <p>Напиши программу, которая запрашивает количество и цену за товар, затем выводит общую стоимость покупки.</p>
+  <pre>Пример ввода:
+3
+150
+
+Пример вывода:
+450</pre>
+  <textarea id="code1" placeholder="# Введи свой код здесь"></textarea>
+  <button onclick="checkStep(1)">Проверить этап 1</button>
+  <div id="result1"></div>
+</section>
+
+<!-- Этап 2 -->
+<section id="step2">
+  <h2>Этап 2. Добавь понятный вывод</h2>
+  <p>Модифицируй программу, чтобы результат выглядел понятнее:</p>
+  <pre>Total: 450</pre>
+  <textarea id="code2" placeholder="# Добавь print с пояснением"></textarea>
+  <button onclick="checkStep(2)">Проверить этап 2</button>
+  <div id="result2"></div>
+</section>
+
+<!-- Этап 3 -->
+<section id="step3">
+  <h2>Этап 3. Добавь расчёт налога 12%</h2>
+  <p>Теперь покупка облагается налогом 12%. Вычисли итог с учётом налога (<code>total = qty * price * 1.12</code>).</p>
+  <pre>Пример ввода:
+3
+150
+
+Пример вывода:
+Total: 504</pre>
+  <textarea id="code3" placeholder="# Добавь формулу с 1.12"></textarea>
+  <button onclick="checkStep(3)">Проверить этап 3</button>
+  <div id="result3"></div>
+</section>
+
+<!-- Этап 4 -->
+<section id="step4">
+  <h2>Этап 4. Добавь название товара и единицы измерения</h2>
+  <p>Программа должна запрашивать название товара и выводить результат так:</p>
+  <pre>Notebook (3 шт.) — Total: 504 ₸</pre>
+  <textarea id="code4" placeholder="# Добавь переменную item и выведи её вместе с total"></textarea>
+  <button onclick="checkStep(4)">Проверить этап 4</button>
+  <div id="result4"></div>
+</section>
+
+<!-- Этап 5 -->
+<section id="step5">
+  <h2>Этап 5. Добавь второй товар и общий итог</h2>
+  <p>Теперь покупатель берёт два товара. Посчитай общую сумму с налогом 12%.</p>
+  <pre>Пример ввода:
+Notebook 3 150
+Pen 2 100
+
+Пример вывода:
+Notebook 3×150₸ 
+Pen 2×100₸ 
+Total: 728 ₸</pre>
+  <textarea id="code5" placeholder="# Добавь вычисления для двух товаров"></textarea>
+  <button onclick="checkStep(5)">Проверить этап 5</button>
+  <div id="result5"></div>
+</section>
+
+<!-- Финал -->
+<section id="final">
+  <h2>✅ Программа готова!</h2>
+  <p>Отлично! Ты прошёл все этапы и создал полноценный калькулятор покупок.</p>
+  <pre>
+item = input()
+qty = int(input())
+price = int(input())
+total = qty * price * 1.12
+print(item, '(', qty, 'шт.) — Total:', int(total), '₸')
+</pre>
+</section>
+
+</main>
+
+<script>
+function showMsg(place,type,text){const d=document.createElement('div');d.className=type;const icon=type==='ok'?'✅':type==='err'?'❌':'⚠️';d.innerHTML=icon+' '+text;place.appendChild(d);}
+function nextStep(n){document.getElementById('step'+n).classList.remove('active');if(n<5){document.getElementById('step'+(n+1)).classList.add('active');}else{document.getElementById('final').classList.add('active');}}
+function checkStep(n){const area=document.getElementById('code'+n);const res=document.getElementById('result'+n);res.innerHTML='';const code=area.value.toLowerCase();let ok=true;
+if(n===1){if(!code.includes('input')){showMsg(res,'err','Не найдено использование input().');ok=false;}if(!code.includes('*')){showMsg(res,'err','Не найдено умножение (*).');ok=false;}if(!code.includes('print')){showMsg(res,'warn','Добавь вывод с помощью print().');ok=false;}}
+if(n===2){if(!code.includes('total')){showMsg(res,'err','Нет переменной total.');ok=false;}if(!code.includes('print')){showMsg(res,'err','Нет вывода print().');ok=false;}if(!code.includes('total:')){showMsg(res,'warn','Добавь текст Total: в вывод.');ok=false;}}
+if(n===3){if(!code.includes('1.12')){showMsg(res,'err','Формула не содержит 1.12 (налог 12%).');ok=false;}if(!code.includes('*')){showMsg(res,'err','Нет операции умножения.');ok=false;}if(!code.includes('print')){showMsg(res,'warn','Добавь вывод результата.');ok=false;}}
+if(n===4){if(!code.includes('item')){showMsg(res,'err','Не добавлена переменная item.');ok=false;}if(!code.includes('шт')){showMsg(res,'warn','Добавь текст "шт." в вывод.');ok=false;}if(!code.includes('₸')){showMsg(res,'warn','Добавь знак валюты ₸.');ok=false;}}
+if(n===5){if((code.match(/input/g)||[]).length<6){showMsg(res,'err','Ожидается ввод для двух товаров (минимум 6 input).');ok=false;}if(!code.includes('total')){showMsg(res,'err','Нет переменной total для общего итога.');ok=false;}if(!code.includes('+')){showMsg(res,'warn','Добавь сложение сумм двух товаров.');ok=false;}if(!code.includes('₸')){showMsg(res,'warn','Добавь валюту ₸.');ok=false;}}
+if(ok){showMsg(res,'ok','✅ Всё верно! Этап '+n+' выполнен.');setTimeout(()=>nextStep(n),1000);} }
+</script>
+</body>
+</html>

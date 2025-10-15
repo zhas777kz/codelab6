@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мини-проект 5 — Площадь комнаты и стоимость ремонта</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#f9fbff;color:#1e1e1e;margin:0;}
+header{background-color:#1e73f7;color:#fff;text-align:center;padding:20px 10px;}
+main{max-width:850px;margin:20px auto;padding:20px;}
+.card{background:#fff;border:2px solid #1e73f7;border-radius:10px;padding:20px;margin-bottom:20px;display:none;}
+.card.active{display:block;animation:fadeIn .5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.card.done{background:#f0f7ff;}
+.card h2{margin-top:0;color:#1e73f7;}
+button{background:#1e73f7;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;font-weight:600;}
+button:hover{background:#155ac0;}
+textarea{width:100%;height:120px;border:2px solid #cfdaf1;border-radius:8px;font-family:monospace;padding:8px;}
+pre{background:#e8f0ff;padding:10px;border-radius:8px;white-space:pre-wrap;}
+.msg{margin-top:10px;padding:8px 10px;border-radius:8px;font-weight:600;}
+.ok{background:#e6fff0;color:#1c7d4d;}
+.err{background:#ffe6e6;color:#b30000;}
+.warn{background:#fff9e6;color:#b37400;}
+#final{display:none;text-align:center;padding:30px;border:2px solid #1e73f7;border-radius:10px;background:#fff;}
+#final h2{color:#1e73f7;}
+.copy{background:#1e73f7;color:#fff;margin-top:10px;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;}
+.copy:hover{background:#155ac0;}
+</style>
+</head>
+<body>
+<header>
+<h1>Мини-проект 5 — Площадь комнаты и стоимость ремонта</h1>
+<p>Пошаговое создание программы по теме «Линейные алгоритмы»</p>
+</header>
+<main>
+<p>💬 Ты создашь программу, которая рассчитывает площадь комнаты и стоимость ремонта, зная длину, ширину и цену за 1 м².</p>
+
+<div class="card active" id="step1">
+<h2>1️⃣ Ввод данных</h2>
+<p>Запроси у пользователя три значения: длину, ширину и цену за квадратный метр.</p>
+<pre>Пример:
+Ввод:
+4
+3
+5000</pre>
+<textarea id="code1" placeholder="# Введи код для ввода данных"></textarea>
+<button onclick="checkStep(1)">Проверить этап</button>
+<div id="res1"></div>
+</div>
+
+<div class="card" id="step2">
+<h2>2️⃣ Вычисление площади</h2>
+<p>Посчитай площадь комнаты по формуле:</p>
+<pre>area = length * width</pre>
+<textarea id="code2" placeholder="# Добавь формулу для площади"></textarea>
+<button onclick="checkStep(2)">Проверить этап</button>
+<div id="res2"></div>
+</div>
+
+<div class="card" id="step3">
+<h2>3️⃣ Расчёт стоимости ремонта</h2>
+<p>Посчитай стоимость ремонта по формуле:</p>
+<pre>cost = area * price</pre>
+<textarea id="code3" placeholder="# Добавь формулу для стоимости ремонта"></textarea>
+<button onclick="checkStep(3)">Проверить этап</button>
+<div id="res3"></div>
+</div>
+
+<div class="card" id="step4">
+<h2>4️⃣ Форматированный вывод</h2>
+<p>Выведи результат в понятной форме, например:</p>
+<pre>Площадь: 12 м²
+Стоимость ремонта: 60000 ₸</pre>
+<textarea id="code4" placeholder="# Добавь вывод с пояснением"></textarea>
+<button onclick="checkStep(4)">Проверить этап</button>
+<div id="res4"></div>
+</div>
+
+<div class="card" id="step5">
+<h2>5️⃣ Добавь округление и единицы измерения</h2>
+<p>Добавь в вывод символы <b>м²</b> и <b>₸</b>, а также округли результат с помощью <code>round()</code>.</p>
+<textarea id="code5" placeholder="# Добавь округление и единицы измерения"></textarea>
+<button onclick="checkStep(5)">Проверить этап</button>
+<div id="res5"></div>
+</div>
+
+<div id="final">
+<h2>🎉 Ты прошёл все этапы!</h2>
+<p>Отлично! Теперь у тебя есть программа, которая рассчитывает площадь комнаты и стоимость ремонта.</p>
+<pre id="finalcode">length = float(input())
+width = float(input())
+price = float(input())
+area = length * width
+cost = area * price
+print('Площадь:', round(area, 2), 'м²')
+print('Стоимость ремонта:', round(cost, 2), '₸')</pre>
+<button class="copy" onclick="navigator.clipboard.writeText(document.getElementById('finalcode').innerText)">Скопировать код</button>
+<button class="copy" onclick="window.scrollTo({top:0,behavior:'smooth'});location.reload();">Пройти заново</button>
+</div>
+</main>
+
+<script>
+function msg(box,type,text){const d=document.createElement('div');d.className='msg '+type;d.textContent=text;box.appendChild(d);}
+function showStep(n){document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));const s=document.getElementById('step'+n);if(s){s.classList.add('active');s.scrollIntoView({behavior:'smooth'});}}
+function checkStep(n){const code=document.getElementById('code'+n).value.toLowerCase();const res=document.getElementById('res'+n);res.innerHTML='';let ok=true;
+if(code.trim()===''){msg(res,'warn','Введите код.');return;}
+if(n===1){if(!code.includes('input')){msg(res,'err','Нет ввода через input().');ok=false;}}
+if(n===2){if(!code.includes('length')||!code.includes('width')||!code.includes('*')){msg(res,'err','Неверная формула. Используй length * width.');ok=false;}}
+if(n===3){if(!code.includes('area')||!code.includes('price')||!code.includes('*')){msg(res,'err','Неверная формула. Используй area * price.');ok=false;}}
+if(n===4){if(!code.includes('print')){msg(res,'warn','Добавь вывод через print().');ok=false;}if(!code.includes('площад')&&!code.includes('стоим')){msg(res,'warn','Добавь понятный текстовый вывод.');ok=false;}}
+if(n===5){if(!code.includes('round')){msg(res,'warn','Добавь округление через round().');ok=false;}if(!code.includes('м²')){msg(res,'warn','Добавь символ м².');ok=false;}if(!code.includes('₸')){msg(res,'warn','Добавь символ ₸.');ok=false;}}
+if(ok){msg(res,'ok','✅ Этап '+n+' выполнен!');document.getElementById('step'+n).classList.add('done');setTimeout(()=>{if(n<5){showStep(n+1);}else{document.getElementById('final').style.display='block';document.getElementById('final').scrollIntoView({behavior:'smooth'});}},800);} }
+</script>
+</body>
+</html>
