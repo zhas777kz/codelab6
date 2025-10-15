@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Контрольная работа (итоговая)</title>
+
+<style>
+:root{--bg:#f7fbff;--ink:#0f172a;--muted:#5b6b82;--brand:#1e73f7;--card:#fff;--shadow:0 10px 24px rgba(15,23,42,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+.wrap{width:min(980px,92%);margin:0 auto;padding:18px 0 56px}
+header{background:linear-gradient(160deg,var(--brand),#5aa2ff);color:#fff;padding:22px 0}
+header .wrap h1{margin:0;font-size:clamp(22px,3.2vw,32px)}
+.small{color:#eaf2ff}
+.card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:18px;margin:14px 0}
+h2{margin:0 0 8px;font-size:clamp(18px,2.2vw,24px)}
+h3{margin:8px 0 6px}
+p.note{color:var(--muted);margin:6px 0 10px}
+.q{border:1px solid #e1eaff;border-radius:12px;padding:14px;margin:12px 0;background:#ffffff}
+.q h4{margin:0 0 6px}
+.q pre{background:#0b1736;color:#e3ecff;border-radius:10px;padding:10px;overflow:auto}
+hr.sep{border:none;height:1px;background:#e7efff;margin:14px 0}
+label{display:block;margin:6px 0}
+input[type=number], input[type=text], select{padding:8px;border:2px solid #cfe2ff;border-radius:10px;font-size:14px;width:100%;max-width:360px}
+ol.ordering > li{background:#f9fbff;border:1px dashed #bcd2ff;border-radius:10px;padding:6px 10px;margin:6px 0}
+.table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.table th,.table td{background:#fff;border:1px solid #e6eefc;padding:10px;border-radius:10px;vertical-align:top}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#e8f1ff;color:#0f40b8;font-weight:700;font-size:.85rem;margin-right:6px}
+textarea{width:100%;min-height:140px;border:2px solid #cfe2ff;border-radius:12px;padding:10px;font-family:ui-monospace,monospace;font-size:14px}
+.btn{appearance:none;border:none;border-radius:12px;background:var(--brand);color:#fff;font-weight:700;padding:8px 12px;cursor:pointer}
+.center{display:flex;gap:10px;align-items:center}
+details{background:#fff;border:1px dashed #aac5ff;border-radius:12px;padding:10px}
+details > summary{cursor:pointer;font-weight:700;color:#0f40b8}
+</style>
+
+
+<!-- Skulpt: in-browser Python runner -->
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Контрольная работа (итоговая)</h1>
+    <p class="small">Проверка по темам 1–9: IDLE, синтаксис, типы, ввод/вывод, линейные алгоритмы, единицы/формат. Время: 45 мин.</p>
+  </div>
+</header>
+<div class="back-home">
+  <a href="index.html" class="home-btn">← Вернуться на главную</a>
+</div>
+
+<style>
+.back-home{
+  max-width:1000px;
+  margin:20px auto 30px;
+  padding:0 16px;
+  text-align:center;
+}
+.home-btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  background:#42a5f5;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  transition:.25s;
+}
+.home-btn:hover{
+  background:#1e88e5;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+</style>
+
+<main class="wrap">
+
+<section id="test2" class="card">
+  <div class="center"><span class="badge">Часть A — тест</span><span class="badge">19 баллов</span></div>
+
+  <div class="q" data-qid="B1" data-points="1">
+    <h4>B1. Один верный — (1 б)</h4>
+    <p>Как из строки <code>s</code> получить целое число?</p>
+    <label><input type="radio" name="B1" data-correct="true"> int(s)</label>
+    <label><input type="radio" name="B1"> str(s)</label>
+    <label><input type="radio" name="B1"> float(s)</label>
+  </div>
+
+  
+  
+  
+  <div class="q" data-qid="B2" data-points="2">
+    <h4>B2. Несколько верных — (2 б)</h4>
+    <p>Пусть <code>a = 3</code>, <code>b = 4</code>. Какие строки выведут ровно <code>Sum: 7</code>?</p>
+    <label><input type="checkbox" data-correct="true"> print("Sum:", a + b)</label>
+    <label><input type="checkbox" data-correct="true"> print("Sum: " + str(a + b))</label>
+    <label><input type="checkbox"> print("Sum: " + (a + b))</label>
+    <label><input type="checkbox"> print(f"Sum: {a}+{b}")</label>
+  </div>
+
+
+
+
+  
+  <div class="q" data-qid="B3" data-points="1" data-answer="2" data-tol="0">
+    <h4>B3. Числовой — (1 б)</h4>
+    <p>Пусть <code>s = "12"</code>. Чему равно <code>len(s)</code>?</p>
+    <input type="number" step="1" placeholder="введи число">
+  </div>
+
+
+<div class="q" data-qid="B4" data-points="1" data-answer="ввод">
+    <h4>B4. Текст — (1 б)</h4>
+    <p>Как называется первая часть линейной программы (получаем данные от пользователя)?</p>
+    <input type="text" placeholder="введи ответ">
+  </div>
+
+  <div class="q" data-qid="B5" data-points="2">
+    <h4>B5. Сопоставь — (2 б)</h4>
+    <table class="table">
+      <tr><th>Термин</th><th>Определение</th></tr>
+      <tr><td>Тип данных</td><td>
+        <select>
+          <option selected>— выбери —</option>
+          <option data-correct="true">Вид значения (int, float, str)</option>
+          <option>Оператор сравнения</option>
+          <option>Встроенная функция</option>
+        </select>
+      </td></tr>
+      <tr><td>Переменная</td><td>
+        <select>
+          <option selected>— выбери —</option>
+          <option data-correct="true">Имя для хранения значения</option>
+          <option>Вывод результата</option>
+          <option>Случайная величина</option>
+        </select>
+      </td></tr>
+      <tr><td>Вывод</td><td>
+        <select>
+          <option selected>— выбери —</option>
+          <option data-correct="true">Печать результата (print)</option>
+          <option>Чтение из клавиатуры</option>
+          <option>Комментарии</option>
+        </select>
+      </td></tr>
+    </table>
+  </div>
+
+  
+  
+  <div class="q" data-qid="B6" data-points="2" data-answer="1 2 3">
+    <h4>B6. Порядок — (2 б)</h4>
+    <p>Задача: ввести три числа, посчитать их среднее, вывести результат. Шаги даны вразброс. Напиши правильный порядок номеров через пробел.</p>
+    <ol class="ordering">
+      <li>(3) Вывод результата</li>
+      <li>(1) Ввод a, b, c</li>
+      <li>(2) Вычислить (a+b+c)/3</li>
+    </ol>
+    <input type="text" placeholder="например: 1 2 3">
+  </div>
+
+
+<div class="q" data-qid="B7" data-points="1">
+    <h4>B7. Один верный — (1 б)</h4>
+    <p>Какой тип у <code>int("4") + int("5")</code>?</p>
+    <label><input type="radio" name="B7" data-correct="true"> int</label>
+    <label><input type="radio" name="B7"> float</label>
+    <label><input type="radio" name="B7"> str</label>
+  </div>
+
+  
+  
+  <div class="q" data-qid="B8" data-points="2">
+    <h4>B8. Несколько верных — (2 б)</h4>
+    <p>Какие строки выведут ровно <code>Result: 7</code>?</p>
+    <label><input type="checkbox" data-correct="true"> print("Result:", 7)</label>
+    <label><input type="checkbox" data-correct="true"> print("Result: " + str(7))</label>
+    <label><input type="checkbox"> print(f"Result: {7:.2f}")</label>
+    <label><input type="checkbox"> print("Result 7")</label>
+  </div>
+
+
+
+  
+  
+  <div class="q" data-qid="B9" data-points="2" data-answer="30" data-tol="0">
+    <h4>B9. Числовой — (2 б)</h4>
+    <p>Пусть <code>s = "25"</code>. Чему равно выражение <code>int(s) + 5</code>? Введи число.</p>
+    <input type="number" step="1" placeholder="введи число">
+  </div>
+
+
+
+
+  
+  <div class="q" data-qid="B10" data-points="1" data-answer="print">
+    <h4>B10. Текст — (1 б)</h4>
+    <p>Как называется функция для вывода на экран?</p>
+    <input type="text" placeholder="введи ответ">
+  </div>
+
+
+<div class="q" data-qid="B11" data-points="1">
+    <h4>B11. Один верный — (1 б)</h4>
+    <p>Что вернёт <code>type("123")</code>?</p>
+    <label><input type="radio" name="B11" data-correct="true"> &lt;class 'str'&gt;</label>
+    <label><input type="radio" name="B11"> &lt;class 'int'&gt;</label>
+    <label><input type="radio" name="B11"> &lt;class 'float'&gt;</label>
+  </div>
+
+  <div class="q" data-qid="B12" data-points="1">
+    <h4>B12. Несколько верных — (1 б)</h4>
+    <p>Какие имена переменных корректны?</p>
+    <label><input type="checkbox" data-correct="true"> name</label>
+    <label><input type="checkbox" data-correct="true"> user_1</label>
+    <label><input type="checkbox"> 1user</label>
+    <label><input type="checkbox"> my-name</label>
+  </div>
+
+  
+  
+  <div class="q" data-qid="B13" data-points="1" data-answer="2" data-tol="0">
+    <h4>B13. Числовой — (1 б)</h4>
+    <p>Чему равно <code>5 // 2</code>?</p>
+    <input type="number" step="1" placeholder="введи число">
+  </div>
+
+
+<div class="q" data-qid="B14" data-points="1" data-answer="2">
+    <h4>B14. Текст — (1 б)</h4>
+    <p>Сколько знаков после запятой используем в оформленных ответах, когда требуется форматирование?</p>
+    <input type="text" placeholder="введи ответ">
+  </div>
+
+  <div class="center">
+    <button class="btn" data-check-test="test2">Проверить тест</button>
+    <div data-test-result="test2"></div>
+  </div>
+</section>
+
+<section id="task2" class="task card" style="box-shadow:none;border:1px solid #e1eaff">
+  <h2>Часть B — мини-практика 1</h2>
+  <h3>Перевод мл→л и стоимость</h3>
+  <p><b>Задание:</b> Введи два числа: объем в миллилитрах и цену за 1 литр. Вычисли литры и стоимость. Выведи <code>Liters: X</code> (или с двумя знаками) и <code>Cost: Y</code>.</p>
+  <h4>Input</h4>
+  <pre class="input">750
+1200</pre>
+  <h4>Ожидаемый Output</h4>
+  <pre class="expected">Liters: 0.75
+Cost: 900</pre>
+  <h4>Твой код (Python)</h4>
+  <textarea class="student-code" spellcheck="false" placeholder="# введи сюда свой код на Python"></textarea>
+  <div class="center" style="margin-top:8px">
+    <button class="btn" id="runAndCheck2">Запустить и проверить</button>
+    <div id="codeResult2"></div>
+  </div>
+  <details style="margin-top:8px"><summary>Показать вывод программы</summary>
+    <pre id="programOutput2" style="white-space:pre-wrap"></pre>
+  </details>
+</section>
+
+<section id="task3" class="task card" style="box-shadow:none;border:1px solid #e1eaff">
+  <h2>Часть C — мини-практика 2</h2>
+  <h3>Площадь и стоимость</h3>
+  <p><b>Задание:</b> Введи три числа: длину, ширину (в метрах) и цену за 1 м^2. Вычисли площадь и стоимость. Выведи строки <code>Area: S</code> и <code>Cost: C</code>.</p>
+  <h4>Input</h4>
+  <pre class="input">3.5
+2.0
+1200</pre>
+  <h4>Ожидаемый Output</h4>
+  <pre class="expected">Area: 7
+Cost: 8400</pre>
+  <h4>Твой код (Python)</h4>
+  <textarea class="student-code" spellcheck="false" placeholder="# введи сюда свой код на Python"></textarea>
+  <div class="center" style="margin-top:8px">
+    <button class="btn" id="runAndCheck3">Запустить и проверить</button>
+    <div id="codeResult3"></div>
+  </div>
+  <details style="margin-top:8px"><summary>Показать вывод программы</summary>
+    <pre id="programOutput3" style="white-space:pre-wrap"></pre>
+  </details>
+</section>
+
+</main>
+
+<script>
+(function(){
+  // ---------- Helpers ----------
+  function normText(s){ return (s||"").trim().toLowerCase().replace(/\s+/g," "); }
+  function approxEqual(a,b,tol){ 
+    var x=parseFloat((a||'').toString().replace(',', '.')), 
+        y=parseFloat((b||'').toString().replace(',', '.')), 
+        t=parseFloat(tol||"0"); 
+    if (isNaN(x)||isNaN(y)) return false; 
+    return Math.abs(x-y) <= t;
+  }
+
+  // ---------- Test checker (weighted) ----------
+  function checkQuestion(q){
+    const pts = parseFloat(q.getAttribute('data-points')||'1');
+    let ok = false;
+    const inputs = q.querySelectorAll('input[type=radio], input[type=checkbox]');
+    if (inputs.length){
+      const corrects = Array.from(inputs).filter(i=>i.dataset.correct==="true");
+      const checked  = Array.from(inputs).filter(i=>i.checked);
+      ok = checked.length===corrects.length && checked.every(i=>i.dataset.correct==="true");
+      return {ok, pts: ok?pts:0};
+    }
+    const text = q.querySelector('input[type=text]');
+    if (text){
+      const ans = q.dataset.answer || "";
+      ok = normText(text.value) === normText(ans);
+      return {ok, pts: ok?pts:0};
+    }
+    const num = q.querySelector('input[type=number]');
+    if (num){
+      const ans = q.dataset.answer || "";
+      const tol = q.dataset.tol || "0";
+      ok = approxEqual(num.value, ans, tol);
+      return {ok, pts: ok?pts:0};
+    }
+    const sels = q.querySelectorAll('select');
+    if (sels.length){
+      ok = Array.from(sels).every(s=>{
+        const opt = s.options[s.selectedIndex];
+        return opt && opt.dataset && opt.dataset.correct==="true";
+      });
+      return {ok, pts: ok?pts:0};
+    }
+    return {ok:false, pts:0};
+  }
+  function highlight(q, ok){
+    q.style.border = ok ? "2px solid #35c46a" : "2px solid #ff8a8a";
+    q.style.borderRadius = "12px";
+  }
+  document.querySelectorAll('[data-check-test]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const testId = btn.getAttribute('data-check-test');
+      const test = document.getElementById(testId);
+      if(!test){ alert('Блок теста не найден: '+testId); return; }
+      const questions = test.querySelectorAll('.q[data-qid]');
+      let got = 0, total = 0;
+      questions.forEach(q=>{
+        const res = checkQuestion(q);
+        highlight(q, res.ok);
+        got += res.pts;
+        total += parseFloat(q.getAttribute('data-points')||'1');
+      });
+      const resBox = document.querySelector(`[data-test-result="${testId}"]`);
+      if(resBox){ resBox.textContent = `Результат: ${got} / ${total}`; }
+    });
+  });
+
+  // ---------- Tasks: run student's code via Skulpt ----------
+  function getTaskIO(selector){
+    const box = document.querySelector(selector);
+    const input = (box.querySelector('.input')?.innerText || '').replace(/\r\n/g,'\n');
+    const expected = (box.querySelector('.expected')?.innerText || '').trim();
+    return {box, input, expected};
+  }
+  function normalizeLines(s){
+    return (s||'').replace(/\r\n/g,'\n').split('\n').map(l=>l.trimEnd()).filter(Boolean).join('\n');
+  }
+  function compareOutputs(exp, got){
+    const e = normalizeLines(exp);
+    const g = normalizeLines(got);
+    if (e === g) return true;
+    // Allow numeric equality for lines like "Total: number", "KG: number", "Area: number"
+    function numFromLine(prefix, text){
+      const m = new RegExp(prefix+String.raw`\s*:\s*([0-9]+(?:[.,][0-9]+)?)`, 'i').exec(text);
+      return m ? parseFloat(m[1].replace(',','.')) : null;
+    }
+    const prefixes = ['total','kg','cost','liters','area','average','result'];
+    // If every prefix present in expected equals in got numerically, accept
+    let allOk = true;
+    prefixes.forEach(p=>{
+      const a = numFromLine(p, e);
+      const b = numFromLine(p, g);
+      if (a!==null){
+        if (b===null || Math.abs(a-b)>0.01){ allOk=false; }
+      }
+    });
+    return allOk;
+  }
+  async function runPython(code, stdinText){
+    return new Promise((resolve)=>{
+      let outBuf = "";
+      function outf(text){ outBuf += text; }
+      function readf(x){
+        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+          throw "File not found: '" + x + "'";
+        return Sk.builtinFiles["files"][x];
+      }
+      const lines = stdinText.split(/\r?\n/);
+      let idx = 0;
+      Sk.configure({
+        output: outf,
+        read: readf,
+        inputfun: function(prompt){ return Promise.resolve( (idx < lines.length ? lines[idx++] : "") ); },
+        inputfunTakesPrompt: true,
+        __future__: Sk.python3
+      });
+      try{
+        Sk.misceval.asyncToPromise(function() {
+          return Sk.importMainWithBody("<stdin>", false, code, true);
+        }).then(function(){ resolve(outBuf); }, function(err){ resolve("<<RuntimeError>> " + err.toString()); });
+      }catch(e){ resolve("<<ConfigError>> " + e.toString()); }
+    });
+  }
+  function wireTask(runBtnId, taskSelector, outId, resId){
+    const btn = document.getElementById(runBtnId);
+    if (!btn) return;
+    btn.addEventListener('click', async ()=>{
+      const {box, input, expected} = getTaskIO(taskSelector);
+      const code = box.querySelector('.student-code')?.value || "";
+      const out = await runPython(code, input);
+      const outBox = document.getElementById(outId);
+      if (outBox){ outBox.textContent = out; }
+      const ok = compareOutputs(expected, out);
+      const res = document.getElementById(resId);
+      if (res){
+        res.textContent = ok ? '✅ Верно' : '❌ Неверно (сверь строки и числа)';
+        res.style.color = ok ? '#198754' : '#c0392b';
+      }
+      box.style.border = ok ? '2px solid #35c46a' : '2px solid #ff8a8a';
+      box.style.borderRadius = '12px';
+    });
+  }
+  wireTask('runAndCheck2', '#task2', 'programOutput2', 'codeResult2');
+  wireTask('runAndCheck3', '#task3', 'programOutput3', 'codeResult3');
+})();
+</script>
+
+</body>
+</html>

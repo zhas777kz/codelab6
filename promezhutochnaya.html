@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Контрольная работа (промежуточная)</title>
+
+<style>
+:root{--bg:#f7fbff;--ink:#0f172a;--muted:#5b6b82;--brand:#1e73f7;--card:#fff;--shadow:0 10px 24px rgba(15,23,42,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+.wrap{width:min(980px,92%);margin:0 auto;padding:18px 0 56px}
+header{background:linear-gradient(160deg,var(--brand),#5aa2ff);color:#fff;padding:22px 0}
+header .wrap h1{margin:0;font-size:clamp(22px,3.2vw,32px)}
+.small{color:#eaf2ff}
+.card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:18px;margin:14px 0}
+h2{margin:0 0 8px;font-size:clamp(18px,2.2vw,24px)}
+h3{margin:8px 0 6px}
+p.note{color:var(--muted);margin:6px 0 10px}
+.q{border:1px solid #e1eaff;border-radius:12px;padding:14px;margin:12px 0;background:#ffffff}
+.q h4{margin:0 0 6px}
+.q pre{background:#0b1736;color:#e3ecff;border-radius:10px;padding:10px;overflow:auto}
+hr.sep{border:none;height:1px;background:#e7efff;margin:14px 0}
+label{display:block;margin:6px 0}
+input[type=number], input[type=text], select{padding:8px;border:2px solid #cfe2ff;border-radius:10px;font-size:14px;width:100%;max-width:360px}
+ol.ordering > li{background:#f9fbff;border:1px dashed #bcd2ff;border-radius:10px;padding:6px 10px;margin:6px 0}
+.table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.table th,.table td{background:#fff;border:1px solid #e6eefc;padding:10px;border-radius:10px;vertical-align:top}
+.warn{border-left:4px solid #ffd27a;background:#fff9eb;border-radius:10px;padding:8px 10px}
+details{background:#fff;border:1px dashed #aac5ff;border-radius:12px;padding:10px}
+details > summary{cursor:pointer;font-weight:700;color:#0f40b8}
+footer{background:linear-gradient(160deg,#5698ff,var(--brand));color:#fff;padding:20px 0;margin-top:24px}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#e8f1ff;color:#0f40b8;font-weight:700;font-size:.85rem;margin-right:6px}
+textarea{width:100%;min-height:140px;border:2px solid #cfe2ff;border-radius:12px;padding:10px;font-family:ui-monospace,monospace;font-size:14px}
+.btn{appearance:none;border:none;border-radius:12px;background:var(--brand);color:#fff;font-weight:700;padding:8px 12px;cursor:pointer}
+.center{display:flex;gap:10px;align-items:center}
+</style>
+
+
+<!-- Skulpt: in-browser Python runner (for code checking) -->
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1>Контрольная работа (промежуточная)</h1>
+    <p class="small">Проверка по темам 1–9: IDLE, синтаксис, типы, ввод/вывод, линейные алгоритмы. Время: 45 мин.</p>
+  </div>
+</header>
+
+<div class="back-home">
+  <a href="index.html" class="home-btn">← Вернуться на главную</a>
+</div>
+
+<style>
+.back-home{
+  max-width:1000px;
+  margin:20px auto 30px;
+  padding:0 16px;
+  text-align:center;
+}
+.home-btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  background:#42a5f5;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  transition:.25s;
+}
+.home-btn:hover{
+  background:#1e88e5;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+</style>
+
+<main class="wrap">
+
+<section id="test1" class="card">
+  
+	<div class="center"><span class="badge">Часть A — тест</span><span class="badge">17 баллов</span></div>
+  <div class="q" data-qid="A1" data-points="1">
+    <h4>A1. Один верный ответ — (1 б)</h4>
+    <p>Что возвращает <code>input()</code> без преобразований?</p>
+    <label><input type="radio" name="A1"> int</label>
+    <label><input type="radio" name="A1"> float</label>
+    <label><input type="radio" name="A1" data-correct="true"> str</label>
+    <label><input type="radio" name="A1"> bool</label>
+  </div>
+
+  <div class="q" data-qid="A2" data-points="2">
+    <h4>A2. Несколько верных — (2 б)</h4>
+    <p>Какие выражения преобразуют строку <code>s</code> к числу для арифметики?</p>
+    <label><input type="checkbox" data-correct="true"> int(s)</label>
+    <label><input type="checkbox" data-correct="true"> float(s)</label>
+    <label><input type="checkbox"> str(s)</label>
+    <label><input type="checkbox"> "s"*1</label>
+  </div>
+
+  <div class="q" data-qid="A3" data-points="1" data-answer="3.5" data-tol="0.001">
+    <h4>A3. Числовой ответ — (1 б)</h4>
+    <p>Если <code>a=7</code>, <code>b=2</code>, то <code>a/b</code> = ?</p>
+    <input type="number" step="0.01" placeholder="введи число">
+  </div>
+
+  <div class="q" data-qid="A4" data-points="1" data-answer="idle">
+    <h4>A4. Текстовый ответ — (1 б)</h4>
+    <p>Как называется среда, в которой начинали работать на курсе?</p>
+    <input type="text" placeholder="введи ответ">
+  </div>
+
+  <div class="q" data-qid="A5" data-points="2">
+    <h4>A5. Сопоставь — (2 б)</h4>
+    <table class="table">
+      <tr><th>Понятие</th><th>Определение</th></tr>
+      <tr><td>Вывод</td><td>
+        <select>
+          <option data-correct="true">Печать результата на экран (print)</option>
+          <option>Получение данных от пользователя (input)</option>
+          <option>Случайный выбор</option>
+        </select>
+      </td></tr>
+      <tr><td>Алгоритм (линейный)</td><td>
+        <select>
+          <option data-correct="true">Последовательность шагов, выполняемых по порядку</option>
+          <option>Случайные шаги</option>
+          <option>Несколько ветвей с условиями</option>
+        </select>
+      </td></tr>
+      <tr><td>Ввод</td><td>
+        <select>
+          <option data-correct="true">Получение данных от пользователя (input)</option>
+          <option>Печать результата на экран</option>
+          <option>Сохранение в файл</option>
+        </select>
+      </td></tr>
+    </table>
+  </div>
+
+  <div class="q" data-qid="A6" data-points="2" data-answer="1 2 3">
+    <h4>A6. Порядок шагов — (2 б)</h4>
+    <p>Ниже шаги даны в перемешанном виде. Запиши правильный порядок номеров через пробел.</p>
+    <ol class="ordering">
+      <li>(3) Вывод</li>
+      <li>(1) Ввод</li>
+      <li>(2) Вычисления</li>
+    </ol>
+    <input type="text" placeholder="например: 1 2 3">
+  </div>
+
+  <div class="q" data-qid="A7" data-points="1">
+    <h4>A7. Один верный ответ — (1 б)</h4>
+    <p>Какой тип у результата <code>3/2</code>?</p>
+    <label><input type="radio" name="A7"> int</label>
+    <label><input type="radio" name="A7" data-correct="true"> float</label>
+    <label><input type="radio" name="A7"> str</label>
+  </div>
+
+  <div class="q" data-qid="A8" data-points="2">
+    <h4>A8. Несколько верных — (2 б)</h4>
+    <p>Какие строки выведут ровно <code>Result: 12</code> (без лишних пробелов и точек)?</p>
+    <label><input type="checkbox" data-correct="true"> print("Result:", 12)</label>
+    <label><input type="checkbox" data-correct="true"> print("Result: " + str(12))</label>
+    <label><input type="checkbox"> print("Result", 12.00)</label>
+    <label><input type="checkbox"> print(f"Result: {12.0:.2f}")</label>
+  </div>
+
+  <div class="q" data-qid="A9" data-points="2" data-answer="30" data-tol="0">
+    <h4>A9. Числовой ответ — (2 б)</h4>
+    <p>Пусть <code>s = "25"</code>. Чему равно выражение <code>int(s) + 5</code>? Введи число.</p>
+    <input type="number" step="1" placeholder="введи число">
+  </div>
+
+  <div class="q" data-qid="A10" data-points="1" data-answer="str">
+    <h4>A10. Текст — (1 б)</h4>
+    <p>Как называется тип данных для текстов?</p>
+    <input type="text" placeholder="введи ответ">
+  </div>
+
+  <div class="q" data-qid="A11" data-points="1">
+    <h4>A11. Один верный ответ — (1 б)</h4>
+    <p>Корректное имя переменной:</p>
+    <label><input type="radio" name="A11"> 2a</label>
+    <label><input type="radio" name="A11" data-correct="true"> a_2</label>
+    <label><input type="radio" name="A11"> привет!</label>
+    <label><input type="radio" name="A11"> a-2</label>
+  </div>
+
+  <div class="q" data-qid="A12" data-points="1">
+    <h4>A12. Несколько верных — (1 б)</h4>
+    <p>Какие преобразования выполнятся без ошибки?</p>
+    <label><input type="checkbox" data-correct="true"> int("25")</label>
+    <label><input type="checkbox" data-correct="true"> float("2.5")</label>
+    <label><input type="checkbox"> int("2.5")</label>
+    <label><input type="checkbox"> int("abc")</label>
+  </div>
+
+  <div class="center">
+    <button class="btn" data-check-test="test1">Проверить тест</button>
+    <div data-test-result="test1"></div>
+  </div>
+</section>
+
+<section id="task1" class="task card" style="box-shadow:none;border:1px solid #e1eaff">
+  <div class="center"><span class="badge">Часть B — практика</span></div>
+  <h3>B1. Стоимость покупки (количество × цена за штуку)</h3>
+  <p><b>Условие:</b> Введи два целых числа: сначала количество, затем цену за штуку. Выведи строку <code>Total: число</code></p>
+  <h4>Input</h4>
+  <pre class="input">3
+150</pre>
+  <h4>Ожидаемый Output</h4>
+  <pre class="expected">Total: 450</pre>
+  <h4>Твой код (Python)</h4>
+  <textarea class="student-code" spellcheck="false" placeholder="# введи сюда свой код на Python"></textarea>
+
+  <div class="center" style="margin-top:8px">
+    <button class="btn" id="runAndCheck">Запустить и проверить</button>
+    <div id="codeResult"></div>
+  </div>
+
+  <details style="margin-top:8px"><summary>Показать вывод программы</summary>
+    <pre id="programOutput" style="white-space:pre-wrap"></pre>
+  </details>
+</section>
+
+</main>
+
+
+
+
+
+
+<script>
+(function(){
+  function normText(s){ return (s||"").trim().toLowerCase().replace(/\s+/g," "); }
+  function approxEqual(a,b,tol){ 
+    var x=parseFloat((a||'').toString().replace(',', '.')), 
+        y=parseFloat((b||'').toString().replace(',', '.')), 
+        t=parseFloat(tol||"0"); 
+    if (isNaN(x)||isNaN(y)) return false; 
+    return Math.abs(x-y) <= t;
+  }
+  function checkQuestion(q){
+    const pts = parseFloat(q.getAttribute('data-points')||'1');
+    let ok = false;
+    const inputs = q.querySelectorAll('input[type=radio], input[type=checkbox]');
+    if (inputs.length){
+      const corrects = Array.from(inputs).filter(i=>i.dataset.correct==="true");
+      const checked  = Array.from(inputs).filter(i=>i.checked);
+      ok = checked.length===corrects.length && checked.every(i=>i.dataset.correct==="true");
+      return {ok, pts: ok?pts:0};
+    }
+    const text = q.querySelector('input[type=text]');
+    if (text){
+      const ans = q.dataset.answer || "";
+      ok = normText(text.value) === normText(ans);
+      return {ok, pts: ok?pts:0};
+    }
+    const num = q.querySelector('input[type=number]');
+    if (num){
+      const ans = q.dataset.answer || "";
+      const tol = q.dataset.tol || "0";
+      ok = approxEqual(num.value, ans, tol);
+      return {ok, pts: ok?pts:0};
+    }
+    const sels = q.querySelectorAll('select');
+    if (sels.length){
+      ok = Array.from(sels).every(s=>{
+        const opt = s.options[s.selectedIndex];
+        return opt && opt.dataset && opt.dataset.correct==="true";
+      });
+      return {ok, pts: ok?pts:0};
+    }
+    return {ok:false, pts:0};
+  }
+  function highlight(q, ok){
+    q.style.border = ok ? "2px solid #35c46a" : "2px solid #ff8a8a";
+    q.style.borderRadius = "12px";
+  }
+  document.querySelectorAll('[data-check-test]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const testId = btn.getAttribute('data-check-test');
+      const test = document.getElementById(testId);
+      if(!test){ alert('Блок теста не найден: '+testId); return; }
+      const questions = test.querySelectorAll('.q[data-qid]');
+      let got = 0, total = 0;
+      questions.forEach(q=>{
+        const res = checkQuestion(q);
+        highlight(q, res.ok);
+        got += res.pts;
+        total += parseFloat(q.getAttribute('data-points')||'1');
+      });
+      const resBox = document.querySelector(`[data-test-result="${testId}"]`);
+      if(resBox){ resBox.textContent = `Результат: ${got} / ${total}`; }
+    });
+  });
+
+  // ===== Task via Skulpt =====
+  function getTaskIO(selector){
+    const box = document.querySelector(selector);
+    const input = (box.querySelector('.input')?.innerText || '').replace(/\r\n/g,'\n');
+    const expected = (box.querySelector('.expected')?.innerText || '').trim();
+    return {box, input, expected};
+  }
+  function compareOutputs(exp, got){
+    function norm(s){ return (s||'').replace(/\r\n/g,'\n').split('\n').map(l=>l.trimEnd()).filter(Boolean).join('\n'); }
+    const e = norm(exp);
+    const g = norm(got);
+    if (e === g) return true;
+    const mE = /total\s*:\s*([0-9]+(?:[.,][0-9]+)?)/i.exec(e);
+    const mG = /total\s*:\s*([0-9]+(?:[.,][0-9]+)?)/i.exec(g);
+    if (mE && mG){
+      const a = parseFloat(mE[1].replace(',','.'));
+      const b = parseFloat(mG[1].replace(',','.'));
+      return Math.abs(a-b) < 0.01;
+    }
+    return false;
+  }
+  async function runPython(code, stdinText){
+    return new Promise((resolve)=>{
+      let outBuf = "";
+      function outf(text){ outBuf += text; }
+      function readf(x){
+        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+          throw "File not found: '" + x + "'";
+        return Sk.builtinFiles["files"][x];
+      }
+      const lines = stdinText.split(/\r?\n/);
+      let idx = 0;
+      Sk.configure({
+        output: outf,
+        read: readf,
+        inputfun: function(prompt){ return Promise.resolve( (idx < lines.length ? lines[idx++] : "") ); },
+        inputfunTakesPrompt: true,
+        __future__: Sk.python3
+      });
+      try{
+        Sk.misceval.asyncToPromise(function() {
+          return Sk.importMainWithBody("<stdin>", false, code, true);
+        }).then(function(){ resolve(outBuf); }, function(err){ resolve("<<RuntimeError>> " + err.toString()); });
+      }catch(e){ resolve("<<ConfigError>> " + e.toString()); }
+    });
+  }
+  document.getElementById('runAndCheck')?.addEventListener('click', async ()=>{
+    const {box, input, expected} = getTaskIO('#task1');
+    const code = box.querySelector('.student-code')?.value || "";
+    const out = await runPython(code, input);
+    const outBox = document.getElementById('programOutput');
+    if (outBox){ outBox.textContent = out; }
+    const ok = compareOutputs(expected, out);
+    const res = document.getElementById('codeResult');
+    if (res){
+      res.textContent = ok ? '✅ Верно' : '❌ Неверно (сверь формат вывода и число)';
+      res.style.color = ok ? '#198754' : '#c0392b';
+    }
+    box.style.border = ok ? '2px solid #35c46a' : '2px solid #ff8a8a';
+    box.style.borderRadius = '12px';
+  });
+})();
+</script>
+</body>
+</html>
