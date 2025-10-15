@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Практикум 2 — Строки и форматирование</title>
+<style>
+:root{
+  --blue1:#42a5f5; --blue2:#1e88e5; --ink:#263238; --card:#ffffff;
+}
+body{margin:0;font-family:Segoe UI,Roboto,Arial;background:linear-gradient(135deg,#e3f2fd,#bbdefb);color:var(--ink)}
+header{background:linear-gradient(90deg,var(--blue1),var(--blue2));color:#fff;text-align:center;padding:40px 20px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+header h1{margin:0;font-size:clamp(22px,3.5vw,32px)}
+header p{margin:.5rem 0 0;font-size:1rem}
+.container{max-width:1000px;margin:30px auto;padding:0 16px}
+.progress{background:#fff;border-radius:14px;padding:14px 18px;margin-bottom:30px;box-shadow:0 6px 14px rgba(0,0,0,.08);display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.bar{flex:1;background:#d0e7ff;border-radius:10px;height:10px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue1),var(--blue2));transition:.3s}
+.level{margin-top:40px}
+.level h2{margin:0 0 20px;color:#1565c0;font-size:1.4rem;border-bottom:3px solid #90caf9;display:inline-block;padding-bottom:4px}
+.task{background:var(--card);border-radius:18px;padding:24px;margin-bottom:26px;box-shadow:0 6px 14px rgba(0,0,0,.12)}
+.task h3{margin-top:0;margin-bottom:8px;color:#0d47a1;font-size:1.2rem}
+.task p.desc{margin-top:0;margin-bottom:14px;font-size:0.95rem;line-height:1.4}
+textarea{width:100%;min-height:120px;padding:12px;font-family:ui-monospace,monospace;font-size:15px;border:2px solid #90caf9;border-radius:12px;resize:vertical}
+button{margin-top:12px;padding:10px 18px;border:none;border-radius:12px;font-weight:600;cursor:pointer;background:var(--blue1);color:#fff;transition:.2s}
+button:hover{background:var(--blue2)}
+.output{margin-top:12px;background:#0b1020;color:#d8e7ff;border-radius:12px;padding:12px;white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:0.9rem}
+footer{max-width:1000px;margin:40px auto 30px;padding:0 16px;color:#41546a;font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Практикум 2. Работа со строками и форматирование вывода</h1>
+  <p>Выполните восемь заданий трёх уровней сложности, чтобы закрепить основы работы со строками в Python.</p>
+</header>
+<div class="back-home">
+  <a href="index.html" class="home-btn">← Вернуться на главную</a>
+</div>
+
+<style>
+.back-home{
+  max-width:1000px;
+  margin:20px auto 30px;
+  padding:0 16px;
+  text-align:center;
+}
+.home-btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  background:#42a5f5;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  transition:.25s;
+}
+.home-btn:hover{
+  background:#1e88e5;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+</style>
+<div class="container">
+  <div class="progress">
+    <strong>Прогресс:</strong>
+    <span id="score">0 / 8 заданий</span>
+    <div class="bar"><div class="fill" id="bar"></div></div>
+  </div>
+
+  <!-- Базовый уровень -->
+  <section class="level">
+    <h2>🟢 Базовый уровень</h2>
+
+    <div class="task"><h3>1. Приветствие</h3>
+      <p class="desc">Считайте имя пользователя и выведите фразу <em>Привет, &lt;имя&gt;!</em></p>
+      <textarea id="code1"></textarea>
+      <button onclick="runTask(1)">Запустить и проверить</button>
+      <div class="output" id="out1"></div>
+    </div>
+
+    <div class="task"><h3>2. Длина строки</h3>
+      <p class="desc">Считайте строку и выведите количество символов в ней.</p>
+      <textarea id="code2"></textarea>
+      <button onclick="runTask(2)">Запустить и проверить</button>
+      <div class="output" id="out2"></div>
+    </div>
+
+    <div class="task"><h3>3. Повторение</h3>
+      <p class="desc">Считайте слово и число <em>n</em>. Выведите слово, повторённое <em>n</em> раз подряд.</p>
+      <textarea id="code3"></textarea>
+      <button onclick="runTask(3)">Запустить и проверить</button>
+      <div class="output" id="out3"></div>
+    </div>
+  </section>
+
+  <!-- Средний уровень -->
+  <section class="level">
+    <h2>🟠 Средний уровень</h2>
+
+    <div class="task"><h3>4. Верхний регистр</h3>
+      <p class="desc">Считайте строку и выведите её полностью в верхнем регистре.</p>
+      <textarea id="code4"></textarea>
+      <button onclick="runTask(4)">Запустить и проверить</button>
+      <div class="output" id="out4"></div>
+    </div>
+
+    <div class="task"><h3>5. Замена символов</h3>
+      <p class="desc">Считайте строку и замените все пробелы на символ подчёркивания <code>_</code>, затем выведите результат.</p>
+      <textarea id="code5"></textarea>
+      <button onclick="runTask(5)">Запустить и проверить</button>
+      <div class="output" id="out5"></div>
+    </div>
+
+    <div class="task"><h3>6. Подсчёт букв</h3>
+      <p class="desc">Считайте строку и выведите, сколько раз буква «а» встречается в этой строке (без учёта регистра).</p>
+      <textarea id="code6"></textarea>
+      <button onclick="runTask(6)">Запустить и проверить</button>
+      <div class="output" id="out6"></div>
+    </div>
+  </section>
+
+  <!-- Продвинутый уровень -->
+  <section class="level">
+    <h2>🔵 Продвинутый уровень</h2>
+
+    <div class="task"><h3>7. Переворот</h3>
+      <p class="desc">Считайте строку и выведите её в обратном порядке (зеркально).</p>
+      <textarea id="code7"></textarea>
+      <button onclick="runTask(7)">Запустить и проверить</button>
+      <div class="output" id="out7"></div>
+    </div>
+
+    <div class="task"><h3>8. Форматированный вывод</h3>
+      <p class="desc">Считайте имя и возраст. Выведите строку вида: «Меня зовут &lt;имя&gt;, мне &lt;возраст&gt; лет» с использованием f-строки.</p>
+      <textarea id="code8"></textarea>
+      <button onclick="runTask(8)">Запустить и проверить</button>
+      <div class="output" id="out8"></div>
+    </div>
+  </section>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+<script>
+let pyReady = loadPyodide();
+let passed = new Set();
+function updateScore(){
+  document.getElementById("score").textContent = `${passed.size} / 8 заданий`;
+  document.getElementById("bar").style.width = (passed.size/8*100)+"%";
+}
+const tasks = {
+  1:{code:'code1',out:'out1',tests:[
+    {input:["Аня\n"],expect:"Привет, Аня!"},
+    {input:["Тимур\n"],expect:"Привет, Тимур!"}
+  ]},
+  2:{code:'code2',out:'out2',tests:[
+    {input:["Python\n"],expect:"6"},
+    {input:["Привет\n"],expect:String("Привет".length)}
+  ]},
+  3:{code:'code3',out:'out3',tests:[
+    {input:["Hi\n","3\n"],expect:"HiHiHi"},
+    {input:["a\n","5\n"],expect:"aaaaa"}
+  ]},
+  4:{code:'code4',out:'out4',tests:[
+    {input:["Hello\n"],expect:"HELLO"},
+    {input:["привет\n"],expect:"ПРИВЕТ"}
+  ]},
+  5:{code:'code5',out:'out5',tests:[
+    {input:["I love python\n"],expect:"I_love_python"},
+    {input:["one two\n"],expect:"one_two"}
+  ]},
+  6:{code:'code6',out:'out6',tests:[
+    {input:["Ананас\n"],expect:"3"},
+    {input:["banana\n"],expect:"3"}
+  ]},
+  7:{code:'code7',out:'out7',tests:[
+    {input:["abcd\n"],expect:"dcba"},
+    {input:["Привет\n"],expect:[..."Привет"].reverse().join("")}
+  ]},
+  8:{code:'code8',out:'out8',tests:[
+    {input:["Анна\n","12\n"],expect:"Меня зовут Анна, мне 12 лет"},
+    {input:["Игорь\n","7\n"],expect:"Меня зовут Игорь, мне 7 лет"}
+  ]}
+};
+
+async function runTask(id){
+  const pyodide = await pyReady;
+  const cfg = tasks[id];
+  const code = document.getElementById(cfg.code).value;
+  const out = document.getElementById(cfg.out);
+  out.textContent = "Запуск тестов…\n";
+  let allOk = true;
+
+  for(let t of cfg.tests){
+    const wrapper = `
+import sys,io,builtins
+_inputs = ${JSON.stringify(t.input)}
+def fake_input(prompt=""):
+    return _inputs.pop(0).strip()
+builtins.input = fake_input
+sys.stdout = io.StringIO()
+${code}
+sys.stdout.getvalue().strip()
+`;
+    try{
+      let r = await pyodide.runPythonAsync(wrapper);
+      let got = r.trim();
+      let exp = Array.isArray(t.expect)?t.expect[0]:t.expect; // на случай русского reverse
+      if(got===exp){
+        out.textContent += `✅ Ввод ${t.input.map(x=>x.trim()).join(", ")} → ${got}\n`;
+      }else{
+        allOk = false;
+        out.textContent += `❌ Ввод ${t.input.map(x=>x.trim()).join(", ")}\n   ожидалось ${exp}, получено ${got}\n`;
+      }
+    }catch(e){
+      allOk = false;
+      out.textContent += `⚠ Ошибка выполнения: ${e}\n`;
+    }
+  }
+
+  if(allOk){
+    out.textContent = "🎉 Все тесты пройдены!\n\n" + out.textContent;
+    passed.add(id);
+  }else{
+    passed.delete(id);
+  }
+  updateScore();
+}
+</script>
+</body>
+</html>

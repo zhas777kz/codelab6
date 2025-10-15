@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Практикум 4 — Итоговое закрепление по основам Python</title>
+<style>
+:root{--blue1:#42a5f5;--blue2:#1e88e5;--ink:#263238;--card:#ffffff}
+body{margin:0;font-family:Segoe UI,Roboto,Arial;background:linear-gradient(135deg,#e3f2fd,#bbdefb);color:var(--ink)}
+header{background:linear-gradient(90deg,var(--blue1),var(--blue2));color:#fff;text-align:center;padding:40px 20px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+header h1{margin:0;font-size:clamp(22px,3.5vw,32px)}
+header p{margin:.5rem 0 0;font-size:1rem}
+.container{max-width:1000px;margin:30px auto;padding:0 16px}
+.progress{background:#fff;border-radius:14px;padding:14px 18px;margin-bottom:30px;box-shadow:0 6px 14px rgba(0,0,0,.08);display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.bar{flex:1;background:#d0e7ff;border-radius:10px;height:10px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue1),var(--blue2));transition:.3s}
+.level{margin-top:40px}
+.level h2{margin:0 0 20px;color:#1565c0;font-size:1.4rem;border-bottom:3px solid #90caf9;display:inline-block;padding-bottom:4px}
+.task{background:var(--card);border-radius:18px;padding:24px;margin-bottom:26px;box-shadow:0 6px 14px rgba(0,0,0,.12)}
+.task h3{margin-top:0;margin-bottom:8px;color:#0d47a1;font-size:1.2rem}
+.task p.desc{margin-top:0;margin-bottom:14px;font-size:0.95rem;line-height:1.4}
+textarea{width:100%;min-height:120px;padding:12px;font-family:ui-monospace,monospace;font-size:15px;border:2px solid #90caf9;border-radius:12px;resize:vertical}
+button{margin-top:12px;padding:10px 18px;border:none;border-radius:12px;font-weight:600;cursor:pointer;background:var(--blue1);color:#fff;transition:.2s}
+button:hover{background:var(--blue2)}
+.output{margin-top:12px;background:#0b1020;color:#d8e7ff;border-radius:12px;padding:12px;white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:0.9rem}
+footer{max-width:1000px;margin:40px auto 30px;padding:0 16px;color:#41546a;font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Практикум 4. Итоговое закрепление по основам Python</h1>
+  <p>Выполните восемь заданий трёх уровней сложности, используя ввод/вывод, преобразования типов, арифметику, строки и форматирование.</p>
+</header>
+<div class="back-home">
+  <a href="index.html" class="home-btn">← Вернуться на главную</a>
+</div>
+
+<style>
+.back-home{
+  max-width:1000px;
+  margin:20px auto 30px;
+  padding:0 16px;
+  text-align:center;
+}
+.home-btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:12px;
+  background:#42a5f5;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  transition:.25s;
+}
+.home-btn:hover{
+  background:#1e88e5;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+</style>
+<div class="container">
+  <div class="progress">
+    <strong>Прогресс:</strong>
+    <span id="score">0 / 8 заданий</span>
+    <div class="bar"><div class="fill" id="bar"></div></div>
+  </div>
+
+  <!-- ===== ЗАДАНИЯ ===== -->
+  <section class="level">
+    <h2>🟢 Базовый уровень</h2>
+    <div class="task"><h3>1. Среднее четырёх чисел</h3>
+      <p class="desc">Считайте четыре числа и выведите их среднее значение (1 знак после запятой).</p>
+      <textarea id="code1"></textarea>
+      <button onclick="runTask(1)">Запустить и проверить</button>
+      <div class="output" id="out1"></div>
+    </div>
+    <div class="task"><h3>2. Площадь и периметр</h3>
+      <p class="desc">Считайте длину и ширину прямоугольника. Выведите площадь и периметр через пробел.</p>
+      <textarea id="code2"></textarea>
+      <button onclick="runTask(2)">Запустить и проверить</button>
+      <div class="output" id="out2"></div>
+    </div>
+    <div class="task"><h3>3. Слово и число</h3>
+      <p class="desc">Считайте слово и число n. Выведите текст: «Слово повторено n раз».</p>
+      <textarea id="code3"></textarea>
+      <button onclick="runTask(3)">Запустить и проверить</button>
+      <div class="output" id="out3"></div>
+    </div>
+  </section>
+
+  <section class="level">
+    <h2>🟠 Средний уровень</h2>
+    <div class="task"><h3>4. Конвертер валют</h3>
+      <p class="desc">Считайте сумму в тенге и курс доллара. Выведите эквивалент в долларах с 2 знаками после запятой.</p>
+      <textarea id="code4"></textarea>
+      <button onclick="runTask(4)">Запустить и проверить</button>
+      <div class="output" id="out4"></div>
+    </div>
+    <div class="task"><h3>5. Формат даты</h3>
+      <p class="desc">Считайте день, месяц и год. Выведите дату в формате DD.MM.YYYY (с ведущими нулями).</p>
+      <textarea id="code5"></textarea>
+      <button onclick="runTask(5)">Запустить и проверить</button>
+      <div class="output" id="out5"></div>
+    </div>
+    <div class="task"><h3>6. Секунды до полуночи</h3>
+      <p class="desc">Считайте текущее время (часы и минуты). Выведите, сколько секунд осталось до полуночи.</p>
+      <textarea id="code6"></textarea>
+      <button onclick="runTask(6)">Запустить и проверить</button>
+      <div class="output" id="out6"></div>
+    </div>
+  </section>
+
+  <section class="level">
+    <h2>🔵 Продвинутый уровень</h2>
+    <div class="task"><h3>7. Имя и средний балл</h3>
+      <p class="desc">Считайте имя и три оценки. Выведите строку: «Имя — средний балл X» (1 знак после запятой).</p>
+      <textarea id="code7"></textarea>
+      <button onclick="runTask(7)">Запустить и проверить</button>
+      <div class="output" id="out7"></div>
+    </div>
+    <div class="task"><h3>8. Кодовое сообщение</h3>
+      <p class="desc">Считайте строку и число n. Выведите строку, в которой каждый символ повторён n раз.</p>
+      <textarea id="code8"></textarea>
+      <button onclick="runTask(8)">Запустить и проверить</button>
+      <div class="output" id="out8"></div>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+<script>
+let pyReady = loadPyodide();
+let passed = new Set();
+function updateScore(){
+  document.getElementById("score").textContent = `${passed.size} / 8 заданий`;
+  document.getElementById("bar").style.width = (passed.size/8*100)+"%";
+}
+const tasks = {
+  1:{code:'code1',out:'out1',tests:[
+    {input:["1\n","2\n","3\n","4\n"],expect:"2.5"},
+    {input:["10\n","10\n","10\n","10\n"],expect:"10.0"}
+  ],normalize:s=>s.replace(",",".")},
+  2:{code:'code2',out:'out2',tests:[
+    {input:["5\n","3\n"],expect:"15 16"},
+    {input:["2\n","2\n"],expect:"4 8"}
+  ]},
+  3:{code:'code3',out:'out3',tests:[
+    {input:["Привет\n","5\n"],expect:"Слово повторено 5 раз"},
+    {input:["Hi\n","3\n"],expect:"Слово повторено 3 раз"}
+  ]},
+  4:{code:'code4',out:'out4',tests:[
+    {input:["500\n","500\n"],expect:"1.00"},
+    {input:["1000\n","400\n"],expect:"2.50"}
+  ],normalize:s=>s.replace(",",".")},
+  5:{code:'code5',out:'out5',tests:[
+    {input:["1\n","2\n","2025\n"],expect:"01.02.2025"},
+    {input:["31\n","12\n","2024\n"],expect:"31.12.2024"}
+  ]},
+  6:{code:'code6',out:'out6',tests:[
+    {input:["23\n","59\n"],expect:"60"},
+    {input:["0\n","0\n"],expect:String(24*3600)}
+  ]},
+  7:{code:'code7',out:'out7',tests:[
+    {input:["Анна\n","5\n","4\n","3\n"],expect:"Анна — средний балл 4.0"},
+    {input:["Игорь\n","2\n","2\n","2\n"],expect:"Игорь — средний балл 2.0"}
+  ],normalize:s=>s.replace(",",".")},
+  8:{code:'code8',out:'out8',tests:[
+    {input:["ab\n","2\n"],expect:"aabb"},
+    {input:["X\n","3\n"],expect:"XXX"}
+  ]}
+};
+
+async function runTask(id){
+  const pyodide = await pyReady;
+  const cfg = tasks[id];
+  const code = document.getElementById(cfg.code).value;
+  const out = document.getElementById(cfg.out);
+  out.textContent = "Запуск тестов…\n";
+  let allOk = true;
+
+  for(let t of cfg.tests){
+    const wrapper = `
+import sys,io,builtins
+_inputs = ${JSON.stringify(t.input)}
+def fake_input(prompt=""):
+    return _inputs.pop(0).strip()
+builtins.input = fake_input
+sys.stdout = io.StringIO()
+${code}
+sys.stdout.getvalue().strip()
+`;
+    try{
+      let r = await pyodide.runPythonAsync(wrapper);
+      let got = r.trim();
+      if(cfg.normalize) got = cfg.normalize(got);
+      let exp = t.expect.trim();
+      if(got===exp){
+        out.textContent += `✅ Ввод ${t.input.map(x=>x.trim()).join(", ")} → ${got}\n`;
+      }else{
+        allOk = false;
+        out.textContent += `❌ Ввод ${t.input.map(x=>x.trim()).join(", ")}\n   ожидалось ${exp}, получено ${got}\n`;
+      }
+    }catch(e){
+      allOk = false;
+      out.textContent += `⚠ Ошибка выполнения: ${e}\n`;
+    }
+  }
+  if(allOk){out.textContent="🎉 Все тесты пройдены!\n\n"+out.textContent;passed.add(id);}else{passed.delete(id);}
+  updateScore();
+}
+</script>
+</body>
+</html>
